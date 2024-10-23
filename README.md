@@ -65,7 +65,7 @@ The Weather Monitoring Dashboard provides real-time weather data for various cit
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone [<repository-url>](https://github.com/Venkipenki/Venkatesh_S/tree/532a04e40f5ec08329150da5160d103ede8eae8d)
+   git clone https://github.com/Venkipenki/Venkatesh_S/tree/532a04e40f5ec08329150da5160d103ede8eae8d
    ```
 2. Navigate to the project directory:
    ```bash
