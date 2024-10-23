@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rule Engine Interface</h1>
+        </header>
+        
+        <main>
+            <section class="sidebar">
+                <h2>How to Enter Rules</h2>
+                <div class="example">
+                    <h3>Create Rule Example</h3>
+                    <strong>Rule Name:</strong> <code>age_rule</code><br>
+                    <strong>Rule String:</strong> <code>(age > 30 AND department = 'Sales')</code><br>
+                    <p>This rule checks if the user's age is greater than 30 and if the department is 'Sales'.</p>
+                </div>
+                <div class="example">
+                    <h3>Evaluate Rule Example</h3>
+                    <strong>Rule Name:</strong> <code>age_rule</code><br>
+                    <strong>User Data:</strong><br>
+                    <code>
+                        {<br>
+                        "age": 35,<br>
+                        "department": "Sales"<br>
+                        }
+                    </code><br>
+                    <p>This will return <strong>True</strong>, as both conditions are satisfied.</p>
+                </div>
+                <div class="example">
+                    <h3>Complex Rule Example</h3>
+                    <strong>Rule Name:</strong> <code>salary_experience_rule</code><br>
+                    <strong>Rule String:</strong> <code>((age > 30 AND department = 'Sales') OR (experience > 5 AND salary > 50000))</code><br>
+                    <p>This rule checks if the user is either older than 30 in Sales or has more than 5 years of experience and a salary greater than $50,000.</p>
+                </div>
+                <div class="example">
+                    <strong>User Data for Evaluation:</strong><br>
+                    <code>
+                        {<br>
+                        "age": 28,<br>
+                        "department": "Marketing",<br>
+                        "experience": 7,<br>
+                        "salary": 60000<br>
+                        }
+                    </code><br>
+                    <p>This will return <strong>True</strong> because the second condition is satisfied.</p>
+                </div>
+            </section>
+
+            <section class="form-container">
+                <h2>Create Rule</h2>
+                <form id="create-rule-form">
+                    <label for="rule-name">Rule Name:</label>
+                    <input type="text" id="rule-name" name="rule_name" placeholder="Enter rule name" required>
+                    <label for="rule-string">Rule String:</label>
+                    <input type="text" id="rule-string" name="rule_string" placeholder="Enter rule string" required>
+                    <button type="submit">Create Rule</button>
+                </form>
+                <div id="create-result" class="result"></div>
+            </section>
+
+            <section class="form-container">
+                <h2>Evaluate Rule</h2>
+                <form id="evaluate-rule-form">
+                    <label for="eval-rule-name">Rule Name:</label>
+                    <input type="text" id="eval-rule-name" name="eval_rule_name" placeholder="Enter rule name" required>
+                    <label for="user-data">User Data (JSON format):</label>
+                    <textarea id="user-data" name="user_data" placeholder='{"age": 28, "department": "Marketing"}' required></textarea>
+                    <button type="submit">Evaluate Rule</button>
+                </form>
+                <div id="eval-result" class="result"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
